@@ -4,7 +4,7 @@
 #' @param W The maximum knapsack size
 #' @return A list of the maximum value in the knapsack and the elements choosen to be in the knapsack
 #' 
-#' 
+#' @export
 
 knapsack_dynamic<- function(x,W){
 

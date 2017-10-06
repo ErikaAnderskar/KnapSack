@@ -4,7 +4,8 @@
 #' @param W The maximum knapsack size
 #' @return A list of the maximum value in the knapsack and the elements choosen to be in the knapsack
 #' 
-#' 
+#' @export
+
 
 greedy_knapsack <- function(x,W){
 
