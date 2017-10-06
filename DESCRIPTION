@@ -7,4 +7,4 @@ Author: Erika Anderskar, Georgia Mushe
 Maintainer: <eanderskar@gmail.com>, <geogriamushe@gmail.com>
 Description: Functions to calculate the maximum value and what elements to put in your knapsack
 License: GPL-3
-Depends: R (>=2.10)
+RoxygenNote: 6.0.1

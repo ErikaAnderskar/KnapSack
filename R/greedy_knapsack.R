@@ -30,8 +30,8 @@ return(list(value=round(sum(result$value)), elements=result$item))
 
 }
 
-}
 
-greedy_knapsack(x=knapsack_objects[1:1200,],W=2000)
+
+
 
 
