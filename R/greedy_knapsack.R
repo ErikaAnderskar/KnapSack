@@ -1,4 +1,10 @@
-
+#' greedy_knapsack function
+#' 
+#' @param x A data.frame with two variables v (values) and w (weights)
+#' @param W The maximum knapsack size
+#' @return A list of the maximum value in the knapsack and the elements choosen to be in the knapsack
+#' 
+#' 
 
 greedy_knapsack <- function(x,W){
 
@@ -23,8 +29,6 @@ if(totalweight<W){
 } 
 
 }
-
-
 
 return(list(value=round(sum(result$value)), elements=result$item))
 
