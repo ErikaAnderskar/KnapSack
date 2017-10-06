@@ -8,8 +8,7 @@
 
 
 greedy_knapsack <- function(x,W){
-
-
+if (W<0) stop ("W has to be a positive number")
 
 x[,3]<- x[,1]/x[,2]
 

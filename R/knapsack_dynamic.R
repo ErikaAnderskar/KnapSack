@@ -7,6 +7,7 @@
 #' @export
 
 knapsack_dynamic<- function(x,W){
+if (W<0) stop ("W has to be a positive number")
 
 test <- data.frame(x[,2],x[,1],1:length(x[,1]))
 test <- t(test)
