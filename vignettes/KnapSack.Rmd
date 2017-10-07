@@ -1,5 +1,6 @@
 ---
-title: "An Introduction to KnapSack"
+title: "lab_report_knapsack"
+name: "KnapSack"
 author: "Erika Anderskär and Georgia Mushe"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -46,11 +47,28 @@ system.time(
 
 ```
 
+It takes about 25 milliseconds to run knapsack_dynamic with 16 observations. 
+
 ##Greedy heuristic
 
 Another approch is the greedy algortithm. It does not give an exact result but it will decrease the complexity in the algorithms. This algoritm calculates the value per weight and sorts the values in order according to this value. This means that the items that give mest value per weight will be brought. 
 
-Example of greedy_knapsack()
+```{r KS4b}
+set.seed(42)
+n <- 1000000
+knapsack_objects <-
+  data.frame(
+    v=sample(1:4000,size=n,replace=TRUE),
+    w=runif(n=n,0,10000)
+  )
+system.time(
+  greedy_knapsack(knapsack_objects,2000)
+  
+)
+```
+
+
+Time  for greedy_knapsack() for n=1000000
 ```{r KS4}
 set.seed(42)
 n <- 1000000
@@ -65,7 +83,19 @@ system.time(
 )
 ```
 
-##Optimize greedy
 
-In greedy_knapsack a for-loop is used. Since  for-loops are very slow in R we try to increase speed by 
+
+###Optimize greedy
+
+In greedy_knapsack a for-loop is used. Since  for-loops are very slow in R we try to increase speed by implementing the for-loop in C++ code instead. 
+
+```{r KS5}
+system.time(greedy_knapsack(x=knapsack_objects[1:1000,], W= 2000))
+
+
+
+```
+
+
+When the C++ code is used, the function greedy_knapsack is about 0.04 millisecounds faster. 
 

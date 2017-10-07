@@ -2,9 +2,9 @@
 % Please edit documentation in R/greedy_knapsack.R
 \name{greedy_knapsack}
 \alias{greedy_knapsack}
-\title{greedy_knapsack function}
+\title{greedy_knapsack_c function}
 \usage{
-greedy_knapsack(x, W)
+greedy_knapsack(x, W, fast = FALSE)
 }
 \arguments{
 \item{x}{A data.frame with two variables v (values) and w (weights)}
@@ -15,5 +15,5 @@ greedy_knapsack(x, W)
 A list of the maximum value in the knapsack and the elements choosen to be in the knapsack
 }
 \description{
-greedy_knapsack function
+greedy_knapsack_c function
 }
