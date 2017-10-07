@@ -8,6 +8,7 @@
 
 
 greedy_knapsack <- function(x,W,fast=FALSE){
+  pause(0.1)
   if (W<0) stop ("W has to be a positive number")
   x[,3]<- x[,1]/x[,2]
   x$item <- 1:nrow(x)
