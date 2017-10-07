@@ -1,0 +1,51 @@
+---
+title: "An Introduction to KnapSack"
+author: "Erika Anderskär and Georgia Mushe"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r KS1, include=FALSE}
+require(microbenchmark)
+require(KnapSack)
+```
+
+The KnapSack problem is a well-known optimization problem. The idea is that we have knapsack that can handle a limited weight W and we want to fill the knapsack with different items. The items have different values for us. For example the toothbrush might be twice as important as the comb. To know which items to bring we make a packlist that contain the items, their weight and a assigned value which indicate how important this exact item is. 
+
+This package contain different functions to optimize the value in the knapsack for a given packlicklist. The functions all take a dataframe x with columns v (values) and w (weights) and a weight limit W.
+
+##Dynamic programing
+
+The function knapsack_dynamic uses dynamic programming which is an alternative when the weights are discreate. The function iterates over all possible values of W and checks what is the highest possible value for that weight. 
+
+Example of knapsack_dynamic:
+
+```{r KS2}
+set.seed(42)
+n <- 2000
+knapsack_objects <-
+  data.frame(
+    v=sample(1:4000,size=n,replace=TRUE),
+    w=runif(n=n,0,10000)
+  )
+
+
+knapsack_dynamic(knapsack_objects[1:8,],3500)
+
+```
+
+```{r KS3}
+system.time(
+  knapsack_dynamic(knapsack_objects[1:500,],3500)
+)
+
+```
+
+##Greedy heuristic
+
+Another approch is the 
+
