@@ -12,6 +12,7 @@ vignette: >
 ```{r KS1, include=FALSE}
 require(microbenchmark)
 require(KnapSack)
+require(Rcpp)
 ```
 
 The KnapSack problem is a well-known optimization problem. The idea is that we have knapsack that can handle a limited weight W and we want to fill the knapsack with different items. The items have different values for us. For example the toothbrush might be twice as important as the comb. To know which items to bring we make a packlist that contain the items, their weight and a assigned value which indicate how important this exact item is. 
@@ -47,5 +48,23 @@ system.time(
 
 ##Greedy heuristic
 
-Another approch is the 
+Another approch is the greedy algortithm. It does not give an exact result but it will decrease the complexity in the algorithms. This algoritm calculates the value per weight and sorts the values in order according to this value. This means that the items that give mest value per weight will be brought. 
+
+Example of greedy_knapsack()
+```{r KS4}
+set.seed(42)
+n <- 1000000
+knapsack_objects <-
+  data.frame(
+    v=sample(1:4000,size=n,replace=TRUE),
+    w=runif(n=n,0,10000)
+  )
+system.time(
+  greedy_knapsack(knapsack_objects,2000)
+  
+)
+```
+
+
+
 
