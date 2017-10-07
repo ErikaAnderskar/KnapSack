@@ -12,7 +12,7 @@ brute_force_knapsack(x, W)
 \item{W}{The maximum knapsack weight}
 }
 \value{
-The maximum value in the knapsack and the elements choosen to be in the knapsack
+Returns the maximum value in the knapsack and the elements choosen to be in the knapsack
 }
 \description{
 Brute force search function
