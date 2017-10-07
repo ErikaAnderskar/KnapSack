@@ -1,6 +1,6 @@
 ---
 title: "lab_report_knapsack"
-name: "KnapSack"
+name: "lab_report_knapsack"
 author: "Erika Anderskär and Georgia Mushe"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -16,7 +16,7 @@ require(KnapSack)
 require(Rcpp)
 ```
 
-The KnapSack problem is a well-known optimization problem. The idea is that we have knapsack that can handle a limited weight W and we want to fill the knapsack with different items. The items have different values for us. For example the toothbrush might be twice as important as the comb. To know which items to bring we make a packlist that contain the items, their weight and a assigned value which indicate how important this exact item is. 
+The KnapSack problem is a well-known optimization problem. The idea is that we have knapsack that can handle a limited weight W and we want to fill the knapsack with different items. The items have different values for us. For example the toothbrush might be twice as important as the comb. To know which items to bring we make a packlist that contain the items, their weight and an assigned value which indicate how important this exact item is. 
 
 This package contain different functions to optimize the value in the knapsack for a given packlicklist. The functions all take a dataframe x with columns v (values) and w (weights) and a weight limit W.
 
@@ -40,6 +40,8 @@ knapsack_dynamic(knapsack_objects[1:8,],3500)
 
 ```
 
+
+How much time does it take to run knapsack_dynamic with 16 observations?
 ```{r KS3}
 system.time(
   knapsack_dynamic(knapsack_objects[1:500,],3500)
@@ -47,7 +49,9 @@ system.time(
 
 ```
 
-It takes about 25 milliseconds to run knapsack_dynamic with 16 observations. 
+It takes about 9 milliseconds to run knapsack_dynamic with 16 observations. 
+
+When the lineproof is run it turns out no tasks in the code take that long time to run. The function is already pretty fast so there is no need to optimize any further.  
 
 ##Greedy heuristic
 
