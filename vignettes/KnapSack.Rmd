@@ -65,6 +65,7 @@ system.time(
 )
 ```
 
+##Optimize greedy
 
-
+In greedy_knapsack a for-loop is used. Since  for-loops are very slow in R we try to increase speed by 
 
