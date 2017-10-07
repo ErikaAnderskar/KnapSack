@@ -6,7 +6,9 @@
 #' 
 #' @export
 
+
 knapsack_dynamic<- function(x,W){
+require(lineprof)
 pause(0.1)
 if (W<0) stop ("W has to be a positive number")
 
