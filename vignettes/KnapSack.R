@@ -1,7 +1,26 @@
-## ----KS1, include=FALSE--------------------------------------------------
+## ----KS, include=FALSE---------------------------------------------------
 require(microbenchmark)
 require(KnapSack)
 require(Rcpp)
+
+## ----KS1a----------------------------------------------------------------
+set.seed(42)
+n <- 2000
+knapsack_objects <-
+  data.frame(
+    v=sample(1:4000,size=n,replace=TRUE),
+    w=runif(n=n,0,10000)
+  )
+
+
+brute_force_knapsack(knapsack_objects[1:8,],3500)
+
+
+## ----KS1b----------------------------------------------------------------
+system.time(
+  brute_force_knapsack(knapsack_objects[1:16,],3500)
+)
+
 
 ## ----KS2-----------------------------------------------------------------
 set.seed(42)

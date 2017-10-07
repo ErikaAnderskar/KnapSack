@@ -2,6 +2,7 @@
 #' 
 #' @param x A data.frame with two variables v (values) and w (weights)
 #' @param W The maximum knapsack size
+#' @param fast =FALSE... tell me...
 #' @return A list of the maximum value in the knapsack and the elements choosen to be in the knapsack
 #' 
 #' @export

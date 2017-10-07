@@ -10,6 +10,8 @@ greedy_knapsack(x, W, fast = FALSE)
 \item{x}{A data.frame with two variables v (values) and w (weights)}
 
 \item{W}{The maximum knapsack size}
+
+\item{fast}{=FALSE... tell me...}
 }
 \value{
 A list of the maximum value in the knapsack and the elements choosen to be in the knapsack

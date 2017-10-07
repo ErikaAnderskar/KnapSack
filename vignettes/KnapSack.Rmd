@@ -10,7 +10,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r KS1, include=FALSE}
+```{r KS, include=FALSE}
 require(microbenchmark)
 require(KnapSack)
 require(Rcpp)
@@ -19,6 +19,35 @@ require(Rcpp)
 The KnapSack problem is a well-known optimization problem. The idea is that we have knapsack that can handle a limited weight W and we want to fill the knapsack with different items. The items have different values for us. For example the toothbrush might be twice as important as the comb. To know which items to bring we make a packlist that contain the items, their weight and an assigned value which indicate how important this exact item is. 
 
 This package contain different functions to optimize the value in the knapsack for a given packlicklist. The functions all take a dataframe x with columns v (values) and w (weights) and a weight limit W.
+
+##Brute force search
+
+The function brute_force_knapsack is the only solution that guaranties a correct answer for the knapsack problem. Brute force go through all possible combinations, $2^n$, and return the maximum value found.
+
+Example of brute_force_knapsack:
+
+```{r KS1a}
+set.seed(42)
+n <- 2000
+knapsack_objects <- data.frame(v=sample(1:4000,size=n,replace=TRUE),
+                               w=runif(n=n,0,10000)
+                               )
+brute_force_knapsack(knapsack_objects[1:8,],3500)
+
+```
+
+
+How much time does it take to run brute_force_knapsack with $16$ observations?
+```{r KS1b}
+sys_time<-system.time(brute_force_knapsack(knapsack_objects[1:16,],3500))
+sys_time
+
+
+```
+
+It takes about `r sys_time[3]` milliseconds to run brute_force_knapsack with $16$ observations. 
+
+Lineproof showed that the data frames takes a little bit longer to run. One way to optimize and speed up run is to minimize data by saving columns to vectors.
 
 ##Dynamic programing
 
@@ -41,15 +70,14 @@ knapsack_dynamic(knapsack_objects[1:8,],3500)
 ```
 
 
-How much time does it take to run knapsack_dynamic with 16 observations?
+How much time does it take to run knapsack_dynamic with $500$ observations?
 ```{r KS3}
-system.time(
-  knapsack_dynamic(knapsack_objects[1:500,],3500)
-)
+sys_time<- system.time(knapsack_dynamic(knapsack_objects[1:500,],3500))
+sys_time
 
 ```
 
-It takes about 9 milliseconds to run knapsack_dynamic with 16 observations. 
+It takes about `r sys_time[3]` milliseconds to run knapsack_dynamic with $500$ observations. 
 
 When the lineproof is run it turns out no tasks in the code take that long time to run. The function is already pretty fast so there is no need to optimize any further.  
 
@@ -72,7 +100,7 @@ system.time(
 ```
 
 
-Time  for greedy_knapsack() for n=1000000
+Time  for greedy_knapsack() for $n = 1 000 000$
 ```{r KS4}
 set.seed(42)
 n <- 1000000
@@ -94,12 +122,11 @@ system.time(
 In greedy_knapsack a for-loop is used. Since  for-loops are very slow in R we try to increase speed by implementing the for-loop in C++ code instead. 
 
 ```{r KS5}
-system.time(greedy_knapsack(x=knapsack_objects[1:1000,], W= 2000))
-
-
+sys_time_<-system.time(greedy_knapsack(x=knapsack_objects[1:1000,], W= 2000))
+sys_time_
 
 ```
 
 
-When the C++ code is used, the function greedy_knapsack is about 0.04 millisecounds faster. 
+When the C++ code is used, the function greedy_knapsack is about `r sys_time[3]` millisecounds faster. 
 
