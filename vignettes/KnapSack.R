@@ -62,8 +62,3 @@ system.time(
   
 )
 
-## ----KS5-----------------------------------------------------------------
-sys_time_<-system.time(greedy_knapsack(x=knapsack_objects[1:1000,], W= 2000))
-sys_time_
-
-

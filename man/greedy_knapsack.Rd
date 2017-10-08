@@ -11,7 +11,7 @@ greedy_knapsack(x, W, fast = FALSE)
 
 \item{W}{The maximum knapsack size}
 
-\item{fast}{=FALSE... tell me...}
+\item{fast}{=FALSE set to TRUE if you want c++ code}
 }
 \value{
 A list of the maximum value in the knapsack and the elements choosen to be in the knapsack
