@@ -37,7 +37,7 @@ brute_force_knapsack(knapsack_objects[1:8,],3500)
 ```
 
 
-How much time does it take to run brute_force_knapsack with $16$ observations?
+How much time does it take to run brute_force_knapsack with $16$ objectss?
 ```{r KS1b}
 sys_time<-system.time(brute_force_knapsack(knapsack_objects[1:16,],3500))
 sys_time
@@ -45,7 +45,7 @@ sys_time
 
 ```
 
-It takes about `r sys_time[3]` milliseconds to run brute_force_knapsack with $16$ observations. 
+It takes about `r sys_time[3]` milliseconds to run brute_force_knapsack with $16$ objects. 
 
 Lineproof showed that the data frames takes a little bit longer to run. One way to optimize and speed up run is to minimize data by saving columns to vectors.
 
@@ -70,14 +70,14 @@ knapsack_dynamic(knapsack_objects[1:8,],3500)
 ```
 
 
-How much time does it take to run knapsack_dynamic with $500$ observations?
+How much time does it take to run knapsack_dynamic with $500$ objects?
 ```{r KS3}
 sys_time<- system.time(knapsack_dynamic(knapsack_objects[1:500,],3500))
 sys_time
 
 ```
 
-It takes about `r sys_time[3]` milliseconds to run knapsack_dynamic with $500$ observations. 
+It takes about `r sys_time[3]` milliseconds to run knapsack_dynamic with $500$ objects. 
 
 When the lineproof is run it turns out no tasks in the code take that long time to run. The function is already pretty fast so there is no need to optimize any further.  
 
@@ -119,14 +119,4 @@ system.time(
 
 ###Optimize greedy
 
-In greedy_knapsack a for-loop is used. Since  for-loops are very slow in R we try to increase speed by implementing the for-loop in C++ code instead. 
-
-```{r KS5}
-sys_time_<-system.time(greedy_knapsack(x=knapsack_objects[1:1000,], W= 2000))
-sys_time_
-
-```
-
-
-When the C++ code is used, the function greedy_knapsack is about `r sys_time[3]` millisecounds faster. 
-
+In greedy_knapsack a for-loop is used. Since  for-loops are very slow in R we try to increase speed by implementing the for-loop in C++ code instead. The c++ code is called by setting fast=TRUE in the function arguments.
